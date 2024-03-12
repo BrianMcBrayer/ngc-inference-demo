@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+      crossorigin="anonymous"
+    ></script>
+    <title>NGC Inference with MermaidJS</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary">
+      <div class="container-fluid">NGC Inference with MermaidJS</div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <h1>Describe your desired diagram</h1>
+          <form method="POST">
+            <div class="mb-3">
+              <label for="diagramDescription" class="form-label"
+                >Diagram Description</label
+              >
+              <textarea
+                class="form-control"
+                id="diagramDescription"
+                name="diagramDescription"
+                rows="10"
+              >
+{{ diagramDescription }}</textarea
+              >
+            </div>
+            <button type="submit" class="btn btn-primary">
+              Create Diagram
+            </button>
+          </form>
+        </div>
+        <div class="col">
+          <h1>Diagram</h1>
+          {% if diagramText %}
+          <h2>Inferred Diagram</h1>
+          <pre class="mermaid">
+                {{ inferredDiagramText }}
+            </pre
+          >
+          <h2>Inferred Diagram Text</h1>
+          <code>{{ inferredDiagramText }}</code>
+          {% else %}
+            <h2>
+                Enter a diagram description and click "Create Diagram"
+            </h2>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <script type="module">
+      import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs";
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+  </body>
+</html>
