@@ -45,14 +45,14 @@
         </div>
         <div class="col">
           <h1>Diagram</h1>
-          {% if diagramText %}
+          {% if inferredDiagramText %}
           <h2>Inferred Diagram</h1>
           <pre class="mermaid">
                 {{ inferredDiagramText }}
             </pre
           >
           <h2>Inferred Diagram Text</h1>
-          <code>{{ inferredDiagramText }}</code>
+          <pre>{{ inferredDiagramText }}</pre>
           {% else %}
             <h2>
                 Enter a diagram description and click "Create Diagram"
